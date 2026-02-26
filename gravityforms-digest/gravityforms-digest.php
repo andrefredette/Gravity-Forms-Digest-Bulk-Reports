@@ -330,7 +330,7 @@
 
 				/* Retrieve form entries newer than the last sent ID */
 				global $wpdb;
-				$leads_table = RGFormsModel::get_lead_table_name();
+				$leads_table = RGFormsModel::get_entry_table_name();
 				$leads = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $leads_table WHERE form_id = %d AND id > %d AND status = 'active';", $form['id'], $last_sent ) );
 
 				if ( !sizeof( $leads ) ) {
