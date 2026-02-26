@@ -118,7 +118,7 @@
 			GFFormSettings::page_header();
 			echo '<form method="post">';
 			echo $this->add_notification_settings( '' );
-			echo '<input type="submit" id="gform_save_settings" name="save" value="Update" class="button-primary gfbutton"></form>';
+			echo '<input type="submit" id="gform_save_settings" name="save" value="Update" class="primary button large" style="margin-top:1em;"></form>';
 			GFFormSettings::page_footer();
 		}
 
@@ -228,9 +228,11 @@
 			$last = $last ? 'last sent lead ' . $last : '';
 
 			?>
-				<div id="submitdiv" class="stuffbox">
-					<h3><span class="hndle"><?php _e( 'Notification Digest', self::$textdomain ); ?></span></h3>
-					<div class="inside" style="padding: 10px;">
+				<div id="submitdiv" class="gform-settings-panel gform-settings-panel--full gform-settings-panel--with-title" style="padding-top: 0;">
+					<legend class="gform-settings-panel__title gform-settings-panel__title--header" style="position: relative;">
+						<?php _e( 'Notification Digest', self::$textdomain ); ?>
+					</legend>
+					<div class="inside gform-settings-panel__content" style="padding: 10px;">
 						<input type="hidden" name="form_notification_digest_screen" value="true">
 						<input type="checkbox" name="form_notification_enable_digest" id="form_notification_enable_digest" value="1" <?php checked( $is_digest_enabled ); ?> onclick="if(this.checked) {jQuery('#form_notification_digest_container').show('slow');} else {jQuery('#form_notification_digest_container').hide('slow');}"/> <label for="form_notification_enable_digest"><?php _e("Enable digest notifications", self::$textdomain); ?></label>
 
