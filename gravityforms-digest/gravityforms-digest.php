@@ -225,7 +225,7 @@
 			$next = wp_next_scheduled( 'gf_digest_send_notifications', array( intval( $form_id ) ) );
 			if ( $next ) $next = 'next scheduled in ' . ( $next - time() ) . ' seconds';
 			$last = isset( $form['digests']['digest_last_sent'] ) ? $form['digests']['digest_last_sent'] : 0;
-			$last = $last ? 'last sent lead ' . $last : '';
+			$last = $last ? 'last sent entry ' . $last : '';
 
 			?>
 				<div id="submitdiv" class="gform-settings-panel gform-settings-panel--full gform-settings-panel--with-title" style="padding-top: 0;">
