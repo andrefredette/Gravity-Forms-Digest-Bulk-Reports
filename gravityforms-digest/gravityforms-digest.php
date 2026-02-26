@@ -108,7 +108,12 @@
 
 		/** Adding a tab in GF 1.7+ */
 		public function add_notification_settings_tab( $tabs ) {
-			$tabs []= array( 'name' => 'digests', 'label' => __( 'Notification Digest', self::$textdomain ), 'query' => array( 'nid' => null ) );
+			$tabs []= array(
+					'name' => 'digests',
+					'label' => __( 'Notification Digest', self::$textdomain ),
+					'icon' => 'dashicons dashicons-feedback',
+					'query' => array( 'nid' => null )
+			);
 			return $tabs;
 		}
 
