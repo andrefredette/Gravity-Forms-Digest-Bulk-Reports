@@ -239,6 +239,7 @@
 					</legend>
 					<div class="inside gform-settings-panel__content" style="padding: 10px;">
 						<input type="hidden" name="form_notification_digest_screen" value="true">
+
 						<input type="checkbox" name="form_notification_enable_digest" id="form_notification_enable_digest" value="1" <?php checked( $is_digest_enabled ); ?> onclick="if(this.checked) {jQuery('#form_notification_digest_container').show('slow');} else {jQuery('#form_notification_digest_container').hide('slow');}"/> <label for="form_notification_enable_digest"><?php _e("Enable digest notifications", self::$textdomain); ?></label>
 
 						<div id="form_notification_digest_container" style="display:<?php echo $is_digest_enabled ? "block" : "none"?>;">
@@ -455,7 +456,11 @@
 					foreach ( $form_ids as $form_id ) {
 						$form = $forms[$form_id];
 						$report .= "\nForm name:\t" . $form['title'] . "\n";
-						$names []= $form['title'];
+
+						$form_name = ( is_countable( $form['leads'] ) ) ?
+													 $form['title'] .' ('. count($form['leads']) .' New)' :
+													 $form['title'];
+						$names[] = $form_name;
 
 						$from = null; $to = null;
 
@@ -464,6 +469,9 @@
 							$report .= __( 'No new entries.', self::$textdomain );
 							$report .= "\n--\n";
 						} else {
+
+							$report .= "\nNew Submissions:\t" . count( $form['leads'] )  . "\n\n";
+
 							foreach ( $form['leads'] as $lead ) {
 								$lead_data = RGFormsModel::get_lead( $lead->id );
 								$report .= "\n--\n";
